@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: saude-service
+  config:
+    import: 'vault://, configserver:http://config-server:8888'
+  cloud:
+    vault:
+      host: ${VAULT_HOST:localhost}
+      port: ${VAULT_PORT:8200}
+      scheme: ${VAULT_SCHEME:http}
+      uri: ${VAULT_SCHEME:http}://${VAULT_HOST:localhost}:${VAULT_PORT:8200}
+      token: ${VAULT_TOKEN:hvs.VSlxeCypMevB7HLAYZ1hB73L}
+      generic:
+        enabled: true
+        application-name: saude-service
+    config:
+      username: ${CONFIG_SERVER_USER:config}
+      password: ${CONFIG_SERVER_PASS:o5qByEjgPOwh3yXOqf}
+  boot:
+    admin:
+      client:
+        url: ${monitoramentoHost}
+        username: ${monitoramentoUser}
+        password: ${monitoramentoPass}
+        instance:
+          metadata:
+            user:
+              name: ${actuatorUser}
+              password: ${actuatorPass}
+  flyway:
+    enabled: true
+    locations: classpath:db/migration

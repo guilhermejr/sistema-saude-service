@@ -1,0 +1,12 @@
+services:
+  energia-service:
+    image: guilhermejr/sistema-saude-service
+    container_name: saude-service
+    restart: always
+    ports:
+      - "9010:9010"
+
+networks:
+  default:
+    external: true
+    name: rede
