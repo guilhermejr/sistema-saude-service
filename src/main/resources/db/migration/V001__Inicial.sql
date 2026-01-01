@@ -48,7 +48,7 @@ create table if not exists metricas
     frequencia_cardiaca_media numeric(19,2),
     frequencia_cardiaca_em_repouso bigint,
     hora_de_ficar_em_pe bigint,
-    frequencia_cardiaca_ao_caminhar_media numeric(19,2),
+    frequencia_cardiaca_ao_caminhar_media bigint,
     peso numeric(19,2),
     saturacao_de_oxigenio numeric(19,2),
     tempo_em_pe bigint,
