@@ -18,6 +18,10 @@ create table if not exists treinos
     frequencia_cardiaca_media numeric(19,2),
     distancia numeric(19,2),
     velocidade_media numeric(19,2),
+    passos bigint,
+    frequencia_passos numeric(19,3),
+    bracadas bigint,
+    frequencia_bracadas numeric(19,3),
     criado timestamp without time zone,
     primary key (id)
 );
@@ -31,7 +35,11 @@ create table if not exists metricas
 (
     id bigserial not null,
     data date,
-    sono time,
+    sono_total time,
+    sono_essencial time,
+    sono_profundo time,
+    sono_rem time,
+    sem_dormir time,
     passos bigint,
     distancia numeric(19,2),
     energia_ativa numeric(19,2),
