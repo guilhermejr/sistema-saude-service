@@ -229,12 +229,22 @@ select
 from score
 order by data desc
 limit 8;
+
 -------------------------------------------------------------------------------
 
-create or replace view vw_tempo_de_pe_e_exposicao_ao_sol as
+create or replace view vw_tempo_de_pe as
 select
     data,
-    tempo_em_pe,
+    tempo_em_pe
+from metricas
+order by data desc
+limit 8;
+
+-------------------------------------------------------------------------------
+
+create or replace view vw_exposicao_ao_sol as
+select
+    data,
     exposicao_ao_sol
 from metricas
 order by data desc
