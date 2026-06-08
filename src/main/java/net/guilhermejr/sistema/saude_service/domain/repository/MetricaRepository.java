@@ -10,6 +10,9 @@ import java.util.List;
 @Repository
 public interface MetricaRepository extends JpaRepository<Metrica, Long> {
 
+    @Query(value = "SELECT id, criado FROM metricas ORDER BY data DESC LIMIT 1", nativeQuery = true)
+    Metrica maisRecente();
+
     @Query(value = "SELECT TO_CHAR(data, 'DD/MM') AS data, tempo_em_pe FROM vw_tempo_de_pe", nativeQuery = true)
     List<Object[]> tempo_de_pe();
 

@@ -2,7 +2,10 @@ package net.guilhermejr.sistema.saude_service.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import net.guilhermejr.sistema.saude_service.api.mapper.TreinoMapper;
 import net.guilhermejr.sistema.saude_service.api.response.RetornoResponse;
+import net.guilhermejr.sistema.saude_service.api.response.TreinoResponse;
+import net.guilhermejr.sistema.saude_service.domain.entity.Treino;
 import net.guilhermejr.sistema.saude_service.domain.repository.TreinoRepository;
 import net.guilhermejr.sistema.saude_service.util.ProcessaSemanalUtil;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,7 @@ public class TreinoService {
 
     private final TreinoRepository treinoRepository;
     private final ProcessaSemanalUtil processaSemanalUtil;
+    private final TreinoMapper treinoMapper;
 
     // --- distancia_total_por_semana -----------------------------------------
     public List<RetornoResponse> distancia_total_por_semana() {
@@ -46,6 +50,13 @@ public class TreinoService {
 
         List<Object[]> dados = treinoRepository.treino_por_semana();
         return processaSemanalUtil.processar(dados);
+
+    }
+
+    // --- maisRecente --------------------------------------------------------
+    public TreinoResponse maisRecente() {
+
+        return treinoMapper.mapObject(treinoRepository.maisRecente());
 
     }
 

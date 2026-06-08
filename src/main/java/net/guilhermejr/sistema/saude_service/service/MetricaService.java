@@ -2,6 +2,8 @@ package net.guilhermejr.sistema.saude_service.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import net.guilhermejr.sistema.saude_service.api.mapper.MetricaMapper;
+import net.guilhermejr.sistema.saude_service.api.response.MetricaResponse;
 import net.guilhermejr.sistema.saude_service.api.response.RetornoResponse;
 import net.guilhermejr.sistema.saude_service.api.response.RetornoSonoResponse;
 import net.guilhermejr.sistema.saude_service.domain.repository.MetricaRepository;
@@ -17,6 +19,7 @@ public class MetricaService {
 
     private final MetricaRepository metricaRepository;
     private final ProcessaSemanalUtil processaSemanalUtil;
+    private final MetricaMapper metricaMapper;
 
     // --- tempo_de_pe --------------------------------------------------------
     public List<RetornoResponse> tempo_de_pe() {
@@ -63,6 +66,13 @@ public class MetricaService {
 
         List<Object[]> dados = metricaRepository.sono_total_medio_media_movel_8_dias();
         return processaSemanalUtil.processarSono(dados);
+
+    }
+
+    // --- maisRecente --------------------------------------------------------
+    public MetricaResponse maisRecente() {
+
+        return metricaMapper.mapObject(metricaRepository.maisRecente());
 
     }
 

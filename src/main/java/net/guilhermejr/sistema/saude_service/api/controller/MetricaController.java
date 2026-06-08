@@ -2,6 +2,7 @@ package net.guilhermejr.sistema.saude_service.api.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import net.guilhermejr.sistema.saude_service.api.response.MetricaResponse;
 import net.guilhermejr.sistema.saude_service.api.response.RetornoResponse;
 import net.guilhermejr.sistema.saude_service.api.response.RetornoSonoResponse;
 import net.guilhermejr.sistema.saude_service.service.MetricaService;
@@ -80,6 +81,16 @@ public class MetricaController {
         log.info("Retornando sono_total_medio_media_movel_8_dias");
         List<RetornoSonoResponse> retornoSonoResponse = metricaService.sono_total_medio_media_movel_8_dias();
         return ResponseEntity.status(HttpStatus.OK).body(retornoSonoResponse);
+
+    }
+
+    // --- maisRecente --------------------------------------------------------
+    @GetMapping("/maisRecente")
+    public ResponseEntity<MetricaResponse> maisRecente() {
+
+        log.info("Retornando maisRecente");
+        MetricaResponse metricaResponse = metricaService.maisRecente();
+        return ResponseEntity.status(HttpStatus.OK).body(metricaResponse);
 
     }
 

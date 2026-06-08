@@ -3,6 +3,7 @@ package net.guilhermejr.sistema.saude_service.api.controller;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.guilhermejr.sistema.saude_service.api.response.RetornoResponse;
+import net.guilhermejr.sistema.saude_service.api.response.TreinoResponse;
 import net.guilhermejr.sistema.saude_service.service.TreinoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +60,16 @@ public class TreinoController {
         log.info("Retornando treino_por_semana");
         List<RetornoResponse> retornoResponse = treinoService.treino_por_semana();
         return ResponseEntity.status(HttpStatus.OK).body(retornoResponse);
+
+    }
+
+    // --- maisRecente --------------------------------------------------------
+    @GetMapping("/maisRecente")
+    public ResponseEntity<TreinoResponse> maisRecente() {
+
+        log.info("Retornando maisRecente");
+        TreinoResponse treinoResponse = treinoService.maisRecente();
+        return ResponseEntity.status(HttpStatus.OK).body(treinoResponse);
 
     }
 
