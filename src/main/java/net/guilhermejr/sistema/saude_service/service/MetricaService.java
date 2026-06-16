@@ -69,10 +69,10 @@ public class MetricaService {
 
     }
 
-    // --- maisRecente --------------------------------------------------------
-    public MetricaResponse maisRecente() {
+    // --- mais_recente -------------------------------------------------------
+    public MetricaResponse mais_recente() {
 
-        return metricaMapper.mapObject(metricaRepository.maisRecente());
+        return metricaMapper.mapObject(metricaRepository.mais_recente());
 
     }
 

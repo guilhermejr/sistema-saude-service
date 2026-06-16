@@ -53,10 +53,10 @@ public class TreinoService {
 
     }
 
-    // --- maisRecente --------------------------------------------------------
-    public TreinoResponse maisRecente() {
+    // --- mais_recente -------------------------------------------------------
+    public TreinoResponse mais_recente() {
 
-        return treinoMapper.mapObject(treinoRepository.maisRecente());
+        return treinoMapper.mapObject(treinoRepository.mais_recente());
 
     }
 

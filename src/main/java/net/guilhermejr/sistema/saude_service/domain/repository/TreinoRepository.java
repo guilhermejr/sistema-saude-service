@@ -11,7 +11,7 @@ import java.util.List;
 public interface TreinoRepository extends JpaRepository<Treino, Long> {
 
     @Query(value = "SELECT id, criado FROM treinos ORDER BY inicio DESC LIMIT 1", nativeQuery = true)
-    Treino maisRecente();
+    Treino mais_recente();
 
     @Query(value = "SELECT TO_CHAR(semana, 'DD/MM') AS semana, distancia_total FROM vw_distancia_total_por_semana", nativeQuery = true)
     List<Object[]> distancia_total_por_semana();

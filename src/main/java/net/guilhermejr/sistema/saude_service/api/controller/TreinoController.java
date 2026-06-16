@@ -63,12 +63,12 @@ public class TreinoController {
 
     }
 
-    // --- maisRecente --------------------------------------------------------
-    @GetMapping("/maisRecente")
-    public ResponseEntity<TreinoResponse> maisRecente() {
+    // --- mais_recente -------------------------------------------------------
+    @GetMapping("/mais_recente")
+    public ResponseEntity<TreinoResponse> mais_recente() {
 
-        log.info("Retornando maisRecente");
-        TreinoResponse treinoResponse = treinoService.maisRecente();
+        log.info("Retornando treinos mais_recente");
+        TreinoResponse treinoResponse = treinoService.mais_recente();
         return ResponseEntity.status(HttpStatus.OK).body(treinoResponse);
 
     }

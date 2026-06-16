@@ -84,12 +84,12 @@ public class MetricaController {
 
     }
 
-    // --- maisRecente --------------------------------------------------------
-    @GetMapping("/maisRecente")
-    public ResponseEntity<MetricaResponse> maisRecente() {
+    // --- mais_recente -------------------------------------------------------
+    @GetMapping("/mais_recente")
+    public ResponseEntity<MetricaResponse> mais_recente() {
 
-        log.info("Retornando maisRecente");
-        MetricaResponse metricaResponse = metricaService.maisRecente();
+        log.info("Retornando métricas mais_recente");
+        MetricaResponse metricaResponse = metricaService.mais_recente();
         return ResponseEntity.status(HttpStatus.OK).body(metricaResponse);
 
     }
