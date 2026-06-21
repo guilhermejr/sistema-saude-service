@@ -1,6 +1,7 @@
 package net.guilhermejr.sistema.saude_service.util;
 
 import lombok.extern.log4j.Log4j2;
+import net.guilhermejr.sistema.saude_service.api.response.ResumoTreinosResponse;
 import net.guilhermejr.sistema.saude_service.api.response.RetornoResponse;
 import net.guilhermejr.sistema.saude_service.api.response.RetornoSonoResponse;
 import org.springframework.stereotype.Component;
@@ -47,6 +48,20 @@ public class ProcessaSemanalUtil {
         });
 
         return retorno;
+    }
+
+    public ResumoTreinosResponse processarResumoTreinos(List<Object[]> dados) {
+
+        ResumoTreinosResponse resumoTreinosResponse = new ResumoTreinosResponse();
+        dados.forEach(res -> {
+            resumoTreinosResponse.setQuantidade_treinos(Long.parseLong(res[0].toString()));
+            resumoTreinosResponse.setDistancia(Math.round(Double.parseDouble(res[1].toString())));
+            resumoTreinosResponse.setEnergia_ativa(Math.round(Double.parseDouble(res[2].toString())));
+            resumoTreinosResponse.setDuracao(Math.round(Double.parseDouble(res[3].toString())));
+        });
+
+        return resumoTreinosResponse;
+
     }
 
 }

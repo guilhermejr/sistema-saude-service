@@ -25,4 +25,7 @@ public interface TreinoRepository extends JpaRepository<Treino, Long> {
     @Query(value = "SELECT TO_CHAR(semana, 'DD/MM') AS semana, qtd_treinos FROM vw_treino_por_semana", nativeQuery = true)
     List<Object[]> treino_por_semana();
 
+    @Query(value = "SELECT COUNT(*) AS quantidade_treinos, SUM(distancia) AS distancia, SUM(energia_ativa) AS energia_ativa, SUM(EXTRACT(EPOCH FROM duracao) / 60) AS duracao FROM treinos WHERE inicio >= NOW() - INTERVAL '7 days'", nativeQuery = true)
+    List<Object[]> resumo_treinos();
+
 }

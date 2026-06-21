@@ -3,6 +3,7 @@ package net.guilhermejr.sistema.saude_service.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.guilhermejr.sistema.saude_service.api.mapper.TreinoMapper;
+import net.guilhermejr.sistema.saude_service.api.response.ResumoTreinosResponse;
 import net.guilhermejr.sistema.saude_service.api.response.RetornoResponse;
 import net.guilhermejr.sistema.saude_service.api.response.TreinoResponse;
 import net.guilhermejr.sistema.saude_service.domain.entity.Treino;
@@ -57,6 +58,14 @@ public class TreinoService {
     public TreinoResponse mais_recente() {
 
         return treinoMapper.mapObject(treinoRepository.mais_recente());
+
+    }
+
+    // --- resumo_treinos -----------------------------------------------------
+    public ResumoTreinosResponse resumo_treinos() {
+
+        List<Object[]> dados = treinoRepository.resumo_treinos();
+        return processaSemanalUtil.processarResumoTreinos(dados);
 
     }
 

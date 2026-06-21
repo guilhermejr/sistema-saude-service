@@ -2,6 +2,7 @@ package net.guilhermejr.sistema.saude_service.api.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import net.guilhermejr.sistema.saude_service.api.response.ResumoTreinosResponse;
 import net.guilhermejr.sistema.saude_service.api.response.RetornoResponse;
 import net.guilhermejr.sistema.saude_service.api.response.TreinoResponse;
 import net.guilhermejr.sistema.saude_service.service.TreinoService;
@@ -70,6 +71,16 @@ public class TreinoController {
         log.info("Retornando treinos mais_recente");
         TreinoResponse treinoResponse = treinoService.mais_recente();
         return ResponseEntity.status(HttpStatus.OK).body(treinoResponse);
+
+    }
+
+    // --- resumo_treinos -----------------------------------------------------
+    @GetMapping("/resumo_treinos")
+    public ResponseEntity<ResumoTreinosResponse> resumo_treinos() {
+
+        log.info("Retornando resumo_treinos");
+        ResumoTreinosResponse resumoTreinosResponse = treinoService.resumo_treinos();
+        return ResponseEntity.status(HttpStatus.OK).body(resumoTreinosResponse);
 
     }
 
