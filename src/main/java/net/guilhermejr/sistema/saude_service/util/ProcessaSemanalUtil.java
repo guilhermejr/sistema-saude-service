@@ -54,14 +54,22 @@ public class ProcessaSemanalUtil {
 
         ResumoTreinosResponse resumoTreinosResponse = new ResumoTreinosResponse();
         dados.forEach(res -> {
-            resumoTreinosResponse.setQuantidade_treinos(Long.parseLong(res[0].toString()));
-            resumoTreinosResponse.setDistancia(Math.round(Double.parseDouble(res[1].toString())));
-            resumoTreinosResponse.setEnergia_ativa(Math.round(Double.parseDouble(res[2].toString())));
-            resumoTreinosResponse.setDuracao(Math.round(Double.parseDouble(res[3].toString())));
+            resumoTreinosResponse.setQuantidade_treinos(toLong(res[0]));
+            resumoTreinosResponse.setDistancia(toRoundedLong(res[1]));
+            resumoTreinosResponse.setEnergia_ativa(toRoundedLong(res[2]));
+            resumoTreinosResponse.setDuracao(toRoundedLong(res[3]));
         });
 
         return resumoTreinosResponse;
 
+    }
+
+    private Long toLong(Object value) {
+        return value == null ? 0L : Long.parseLong(value.toString());
+    }
+
+    private Long toRoundedLong(Object value) {
+        return value == null ? 0L : Math.round(Double.parseDouble(value.toString()));
     }
 
 }
