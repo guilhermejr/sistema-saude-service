@@ -10,5 +10,8 @@ ENV VAULT_TOKEN=${VAULT_TOKEN}
 ENV CONFIG_SERVER_USER=${CONFIG_SERVER_USER}
 ENV CONFIG_SERVER_PASS=${CONFIG_SERVER_PASS}
 COPY sistema-saude-service.jar sistema-saude-service.jar
+HEALTHCHECK --interval=30s --timeout=5s --start-period=90s --retries=3 \
+  CMD curl -fsS http://localhost:9010/saude-service/actuator/health | grep -q '"status":"UP"' || exit 1
+
 ENTRYPOINT ["java","-Dspring.profiles.active=prod","-jar","/sistema-saude-service.jar"]
 EXPOSE 9010
