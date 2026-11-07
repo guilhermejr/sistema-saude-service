@@ -31,5 +31,8 @@ public interface MetricaRepository extends JpaRepository<Metrica, Long> {
     @Query(value = "SELECT TO_CHAR(data, 'DD/MM') AS data, sono_total, sono_total_horas, media_movel_8d_sono_total_horas FROM vw_sono_total_medio_media_movel_8_dias", nativeQuery = true)
     List<Object[]> sono_total_medio_media_movel_8_dias();
 
+    // Dia sem pesagem chega com peso 0.
+    @Query(value = "SELECT TO_CHAR(data, 'DD/MM/YYYY') AS data, peso FROM metricas WHERE peso > 0 ORDER BY metricas.data DESC LIMIT 8", nativeQuery = true)
+    List<Object[]> ultimos_pesos();
 
 }

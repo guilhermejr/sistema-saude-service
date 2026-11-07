@@ -69,6 +69,14 @@ public class MetricaService {
 
     }
 
+    // --- ultimos_pesos ------------------------------------------------------
+    public List<RetornoResponse> ultimos_pesos() {
+
+        List<Object[]> dados = metricaRepository.ultimos_pesos();
+        return processaSemanalUtil.processar(dados);
+
+    }
+
     // --- mais_recente -------------------------------------------------------
     public MetricaResponse mais_recente() {
 

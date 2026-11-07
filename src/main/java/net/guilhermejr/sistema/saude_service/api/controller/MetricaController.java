@@ -84,6 +84,16 @@ public class MetricaController {
 
     }
 
+    // --- ultimos_pesos ------------------------------------------------------
+    @GetMapping("/ultimos_pesos")
+    public ResponseEntity<List<RetornoResponse>> ultimos_pesos() {
+
+        log.info("Retornando ultimos_pesos");
+        List<RetornoResponse> retornoResponse = metricaService.ultimos_pesos();
+        return ResponseEntity.status(HttpStatus.OK).body(retornoResponse);
+
+    }
+
     // --- mais_recente -------------------------------------------------------
     @GetMapping("/mais_recente")
     public ResponseEntity<MetricaResponse> mais_recente() {
