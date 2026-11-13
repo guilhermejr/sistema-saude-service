@@ -1,5 +1,5 @@
 services:
-  energia-service:
+  saude-service:
     image: guilhermejr/sistema-saude-service
     container_name: saude-service
     restart: always
