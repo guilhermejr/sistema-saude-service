@@ -3,6 +3,7 @@ services:
     image: guilhermejr/sistema-saude-service
     container_name: saude-service
     restart: always
+    env_file: /home/guilhermejr/secrets/saude-service.env
     ports:
       - "127.0.0.1:9010:9010"
 
